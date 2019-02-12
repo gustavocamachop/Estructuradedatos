@@ -1,0 +1,22 @@
+// iva.cpp : Defines the entry point for the console application.
+//
+//librerias
+#include "stdafx.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "conio.h"
+#include "iostream"
+#include "math.h"
+using namespace std;
+
+//prototipos
+
+void main ()
+{float p, i, t;
+do { cout<<"Ingrese el precio del producto"<<endl;
+cin>>p;}while (p<0);
+i=p*0.13; t=i+p;
+cout<<"El Iva del producto es: "<<i<< " y el precio final es: "<<t<<endl;
+getch();
+	
+}
