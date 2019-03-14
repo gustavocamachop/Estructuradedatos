@@ -1,0 +1,62 @@
+//.h
+#pragma once
+#include <string>
+#include <iostream>
+using namespace std; 
+class Palin
+{
+private:
+	string frase;
+public:
+
+	Palin(string _frase);
+	~Palin(void);
+	bool verificar();
+};
+
+
+//.cpp
+#include <iostream>
+using namespace std;
+
+Palin::Palin(string _frase)
+{frase=_frase;
+}
+
+
+Palin::~Palin(void)
+{
+}
+
+bool Palin::verificar()
+{bool aux=true;int l=frase.length();
+  for (int a=0;a<l/2;a++,l--)
+  {if (frase[a]!=frase[l-1])
+  {return aux=false;
+  }
+  }
+ return aux;
+}
+
+// palindromo.cpp main
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "Palin.h"
+using namespace std;
+
+
+void main()
+{string f1;
+Palin p1(f1);
+cout<<"Ingrese la frase: ";
+getline(cin,f1);
+if(p1.verificar())
+{cout<<"La frase es palindroma"<<endl;
+}
+else
+{cout<<"La frase no es palindroma"<<endl;
+}
+system ("pause");
+}
