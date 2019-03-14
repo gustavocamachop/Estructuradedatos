@@ -1,0 +1,66 @@
+//minusculas.h
+#pragma once
+#include <string>
+using namespace std;
+class cadena
+{
+private:
+	string cad;
+	int minusculas;
+public:
+	cadena(void);
+	~cadena(void);
+	void leercadena();
+	void contarMinusculas();
+	int getMinusculas ();
+};
+
+//minusculas.cpp
+#include "StdAfx.h"
+#include "cadena.h"
+#include <string>
+#include <iostream>
+using namespace std;
+
+
+cadena::cadena(void)
+{
+}
+
+
+cadena::~cadena(void)
+{
+}
+
+void cadena::leercadena()
+{cout<<"Ingrese una cadena: ";
+ getline(cin,cad);
+}
+
+void cadena::contarMinusculas()
+{int tam=cad.length(), cont=0;
+for (int i=0;i<tam;i++)
+{if(cad[i]>='a' && cad[i]<='z') cont++;
+}minusculas=cont;
+}
+
+int cadena::getMinusculas()
+{return minusculas;
+}
+//minusculas.main
+
+#include "stdafx.h"
+#include "conio.h"
+#include <string>
+#include <iostream>
+using namespace std;
+#include "cadena.h"
+
+void main()
+{cadena var;
+var.leercadena();
+var.contarMinusculas();
+int respuesta =var.getMinusculas();
+cout<<"Hay "<<respuesta<<" minusculas"<<endl;
+getch();
+}
