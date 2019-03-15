@@ -1,0 +1,58 @@
+//pares.h
+#pragma once
+class pares
+{
+private: int n;
+public:
+	pares(void);
+	~pares(void);
+	bool verificarpares( int n);
+};
+
+//pares.cpp
+#include "StdAfx.h"
+#include "pares.h"
+#include "conio.h"
+#include <iostream> 
+using namespace std;
+
+
+pares::pares(void)
+{
+}
+
+
+pares::~pares(void)
+{
+}
+
+bool pares::verificarpares ( int n)
+{int r; bool k=false;
+	do{r=n%10;
+	   if(r%2==0)
+	   {k=true;
+	   }n=n/10;
+     }while(n>0);
+	return k;
+}
+
+// examinito2.cpp
+
+#include "stdafx.h"
+#include "pares.h"
+#include "conio.h"
+#include <iostream> 
+using namespace std;
+
+
+void main()
+{int num;
+cout<<"Ingrese un numero entero: ";
+	cin>>num;
+pares n1;
+if(n1.verificarpares(num)==true)
+{cout<<"El numero tiene digitos pares"<<endl;
+}else {cout<<"El numero no tiene digitos pares"<<endl;
+      }
+getch();
+}
