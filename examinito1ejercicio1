@@ -1,0 +1,54 @@
+//cilindro.h
+#pragma once
+class cilindro
+{
+private: float radio;
+		 float altura;
+public:
+	cilindro(void);
+	~cilindro(void);
+	void area( float r, float h);
+};
+
+//cilindro.cpp
+#include "StdAfx.h"
+#include "cilindro.h"
+#include "conio.h"
+#include <iostream> 
+using namespace std;
+
+cilindro::cilindro(void)
+{
+}
+
+
+cilindro::~cilindro(void)
+{
+}
+
+void cilindro::area( float r, float h)
+{float area;
+area= (2*3.1416*r*r)+(2*3.1416*r*h);
+cout<<"El area del cilindro es: "<<area<< " u2"<<endl;
+}
+// examinito1.cpp
+
+#include "stdafx.h"
+#include "cilindro.h"
+#include "conio.h"
+#include <iostream> 
+using namespace std;
+
+
+void main()
+{float rad,alt;
+cilindro c1;
+do{cout<<"Ingrese el radio del cilindro: "; 
+   cin>>rad;
+  }while(rad<=0);
+do{cout<<"Ingrese la altura cilindro: "; 
+   cin>>alt;
+  }while(alt<=0);
+c1.area(rad,alt);
+getch();
+}
