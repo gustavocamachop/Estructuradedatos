@@ -1,0 +1,76 @@
+#pragma once
+#define MAX 100
+class matriz
+{
+private: int fila,columna, MAT [MAX][MAX];
+public:
+	matriz(int _f, int _c);
+	~matriz(void);
+	void transpuesta (int M[MAX][MAX]);
+	void diagonal(int M[MAX][MAX]);
+	void cargar(int M[MAX][MAX]);
+	void mostrar ();
+};
+
+
+#include "StdAfx.h"
+#include "matriz.h"
+#include <iostream>
+using namespace std;
+
+matriz::matriz(int _f, int _c)
+{fila =_f;
+columna=_c;
+}
+matriz::~matriz(void)
+{}
+void matriz::cargar(int M[MAX][MAX])
+{for (int a=0;a<fila;a++)
+{for (int b=0;b<columna;b++)
+{cout<<"M["<<a<<"]["<<b<<"]: ";
+cin>>M[a][b];
+}}}
+void matriz::mostrar ()
+{for (int a=0;a<columna;a++)
+{for (int b=0;b<fila;b++)
+{cout<<MAT[a][b]<<"  ";
+}cout<<endl;}}
+void matriz::transpuesta (int M[MAX][MAX])
+{for (int a=0;a<fila;a++)
+{for (int b=0;b<columna;b++)
+{MAT[b][a]=M[a][b];
+}}}
+void matriz::diagonal (int M[MAX][MAX])
+{if (fila==columna)
+{for(int a=0;a<fila;a++)
+{cout<<MAT[a][a]<<"  ";
+}
+}
+else{cout<<"No se puede obteener la diagonal"<<endl;}
+}
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include "matriz.h"
+using namespace std;
+#define MAX 100
+
+void main()
+{ int f,c; int M[MAX][MAX];
+do{ cout<<"Ingrese la cantidad de filas: "; cin>>f;} while (f<0||f>MAX);
+do{ cout<<"Ingrese la cantidad de columnas: "; cin>>c;} while (c<0||c>MAX);
+matriz m1(f,c);
+cout<<"Ingrese la matriz: "<<endl;
+m1.cargar(M);
+cout<<"La matriz transpuesta es: "<<endl;
+m1.transpuesta(M);
+m1.mostrar();
+cout<<"La diagional de la matriz es: "<<endl;
+m1.diagonal(M);
+
+
+
+
+
+getch();
+}
