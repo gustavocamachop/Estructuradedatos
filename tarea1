@@ -1,0 +1,212 @@
+//vector.h
+#pragma once
+#define MAX 100
+class vectorr
+{
+private: int VEC[MAX], n;
+public:
+	vectorr(void);
+	~vectorr(void);
+	void asignar (int _V[MAX], int _n);
+	void ordenarascendente ();
+	void ordenardescendente ();
+};
+
+//vector.cpp
+#include "StdAfx.h"
+#include "vectorr.h"
+#include <iostream>
+using namespace std;
+
+vectorr::vectorr(void)
+{
+}
+
+
+vectorr::~vectorr(void)
+{
+}
+
+void vectorr::asignar (int _V[MAX], int _n)
+{n=_n;
+	
+	for (int a=0;a<n;a++)
+		{VEC[a]=_V[a];
+	}
+}
+void vectorr::ordenarascendente ()
+{int aux ;
+	for (int a =0; a<n-1;a++)
+{ for (int b=a;b<n;b++)
+	{if (VEC[b]<VEC[a])
+	{aux=VEC[a]; VEC[a]=VEC[b]; VEC[b]=aux;
+	}
+	}
+}
+	for (int a=0;a<n;a++)
+		{cout<<VEC[a]<<"  ";
+	}
+}
+
+void vectorr::ordenardescendente ()
+{int aux ;
+	for (int a =0; a<n-1;a++)
+{ for (int b=a;b<n;b++)
+	{if (VEC[b]>VEC[a])
+	{aux=VEC[a]; VEC[a]=VEC[b]; VEC[b]=aux;
+	}
+	}
+}
+	for (int a=0;a<n;a++)
+		{cout<<VEC[a]<<"  ";
+	}
+}
+
+//paralelogramo.h
+#pragma once
+class paralelogramo
+{
+private: 
+	int d1,d2,h;
+public:
+	float perimetro();
+	float area();
+	void asignar (int a, int b, int c);
+	paralelogramo(void);
+	~paralelogramo(void);
+};
+
+
+//paralelogramo.cpp
+#include "StdAfx.h"
+#include "paralelogramo.h"
+
+paralelogramo::paralelogramo(void)
+{
+}
+
+paralelogramo::~paralelogramo(void)
+{
+}
+
+float paralelogramo::perimetro()
+{float p;
+p=2*d1+2*d2;
+return p;
+}
+float paralelogramo::area()
+{float a;
+a=d1*h;
+return a;
+}
+void paralelogramo::asignar(int a, int b, int c)
+{d1=a;
+d2=b;
+h=c;
+}
+
+
+//cadena.h 
+#pragma once
+#include <iostream>
+#include <string>
+using namespace std;
+class cadena
+{private:
+	string cad, aux;
+	int n;
+public:
+	void mostrar ();
+	void asignar (int _n, string _cad);
+	void invertir ();
+	cadena();
+	~cadena(void);
+};
+
+
+//cadena.cpp
+#include "StdAfx.h"
+#include "cadena.h"
+
+cadena::cadena()
+{
+}
+
+
+cadena::~cadena(void)
+{
+}
+
+void cadena::asignar(int _n, string _cad)
+{n= _n;
+cad=_cad;
+}
+
+void cadena::invertir()
+{char aux;
+	for (int a=0; a<n/2;a++)
+{aux=cad[a]; cad[a]=cad[n-1-a]; cad[n-1-a]=aux;
+}
+}
+void cadena::mostrar()
+{cout<<cad;
+}
+
+
+//menumain
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include "cadena.h"
+#include <string>
+#include "paralelogramo.h"
+#include "vectorr.h"
+using namespace std;
+
+void main()
+{string caden;int dd1,dd2,hh, tam,n, opc,V[MAX];
+paralelogramo p1;
+cadena c1;
+vectorr v1;
+do{system("cls");
+	cout<<"Menu"<<endl;
+cout<<"1.- Area y perimetro de un paralelogramo"<<endl;
+cout<<"2.- Invertir una cadena"<<endl;
+cout<<"3.- Ordenar un vector"<<endl;
+cout<<"4.- Salir"<<endl;
+cout<<"Ingrese su opcion: ";cin>>opc;
+switch(opc)
+{case 1:do{cout<<"Ingrese la base: ";cin>>dd1;}while(dd1<=0);
+        do{cout<<"Ingrese la diagonal: ";cin>>dd2;}while(dd2<=0);
+        do{cout<<"Ingrese la altura: ";cin>>hh;}while(hh>dd2);
+		p1.asignar(dd1,dd2,hh);
+		cout<<"El area del paralelogramo es: "<<p1.area()<<endl;
+		cout<<"El perimetro del paralelogramo es: "<<p1.perimetro()<<endl;
+		getch();
+break;
+case 2: cout<<"Ingrese la cadena: ";
+        cin>>caden;
+        tam=caden.length();
+		c1.asignar(tam,caden);
+		c1.invertir();
+		cout<<"La cadena invertida es: ";c1.mostrar();
+		getch();
+break;
+case 3:do{cout<<"Ingrese el tamanio del vector: ";cin>>n;}while(n<1);
+       for(int a=0;a<n;a++)
+	   {cout<<"V["<<a<<"]: ";cin>>V[a];
+	   }
+	   v1.asignar(V,n);
+	   cout<<"El vector ordenado ascendentemente es: "; v1.ordenarascendente();cout<<endl;
+	   cout<<"El vector ordenado descendentemente es: "; v1.ordenardescendente();cout<<endl;
+	   getch();
+break;
+case 4: cout<<"Hasta luego"<<endl; getch();
+break;
+default: cout<<"Opcion invalida"<<endl; getch();
+break;
+}}while(opc!=4);
+
+
+
+}
