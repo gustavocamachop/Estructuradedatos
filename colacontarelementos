@@ -1,0 +1,113 @@
+// colacontarelemetos
+
+#include "stdafx.h"
+#include "conio.h"
+#include "cola.h"
+#include <iostream>
+using namespace std;
+
+
+void main()
+{ int t;
+do {cout<<"Ingrese el maximo de elementos: "; cin>>t;}while (t<1 || t>MAX);
+cola c1(t);
+
+cout<<"Ingrese elementos a su gusto y presione 999 para salir"<<endl;
+
+
+
+int x=0;
+for (int a=0;x!=999&&c1.colallena()==false ;a++)
+{ 
+cin>>x;
+if(x!=999){
+c1.encolar(x);}
+}
+
+if(c1.colallena())
+{cout<<"La cola ya esta llena"<<endl;
+}
+
+cout<<"La cantidad de elemntos es: "<<c1.contar();
+getch();
+
+}
+//cola.cpp
+#include "StdAfx.h"
+#include "cola.h"
+#include <iostream>
+using namespace std;
+
+cola::cola(int _tam)
+{tam= _tam;
+ini=0;fin=0;
+}
+
+
+cola::~cola(void)
+{
+}
+
+void cola::encolar (int _x)
+{ vec[fin]=_x;
+  fin++;
+
+}
+
+void cola::desencolar()
+{int aux= vec[ini];
+for (int a=ini;a<fin;a++)
+{vec[a]=vec[a+1];
+}
+fin--;
+cout<<aux;
+}
+
+bool cola::colallena()
+{if(fin==tam)
+{return true;
+}else {return false;
+}
+}
+
+bool cola::colavacia()
+{if (ini==fin)
+{return true;
+}else {return false;
+}
+}
+
+void cola::mostrar ()
+{for (int a=ini;a<fin;a++)
+{cout<<vec[a]<<"   ";
+}
+}
+
+int cola::contar()
+{int cont=0;
+	for(int a=ini;a<fin;a++)
+{cont++;
+}
+	return cont;
+
+}
+//cola.h
+#pragma once
+#define MAX 100
+class cola
+{
+private:
+	int vec[MAX];
+	int ini;
+	int fin;
+	int tam;
+public:
+	cola(int _tam);
+	~cola(void);
+	void encolar (int _x);
+	void desencolar();
+	bool colallena();
+	bool colavacia();
+	void mostrar ();
+	int contar();
+};
