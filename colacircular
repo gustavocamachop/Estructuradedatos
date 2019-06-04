@@ -1,0 +1,221 @@
+COLA.H
+
+#pragma once
+
+class ColaC
+
+#define MAX 10
+
+{
+
+private :
+
+	int frente, final ;
+
+	int V[MAX];
+
+public:
+
+	ColaC(void);
+
+	~ColaC(void);
+
+	bool ColaLlena ();
+
+	bool ColaVacia();
+
+	bool Encolar(int dato);
+
+	bool Desencolar (int &dato);
+
+	void Mostrar();
+
+  };
+
+  
+
+  
+
+  
+
+  COLA.CPP
+
+  #include "StdAfx.h"
+
+#include "ColaC.h"
+
+#include <iostream>
+
+#include "Pila.h"
+
+ using namespace std;
+
+
+
+ColaC::ColaC(void)
+
+{frente = 0;
+
+ final = 0;
+
+}
+
+
+
+ColaC::~ColaC(void)
+
+{
+
+}
+
+
+
+bool ColaC::ColaLlena()
+
+{ if (frente==(final+1)%MAX)
+
+    {return true ;}
+
+  else
+
+   {return false ;}
+
+}
+
+
+
+bool ColaC::ColaVacia()
+
+{ if (frente==final)
+
+    {  return true ;} 
+
+  else 
+
+    {return false;}
+
+}
+
+
+
+bool ColaC::Encolar(int dato)
+
+{ if (ColaLlena()==true)
+
+    { cout<<"\ncola llena ";
+
+		return false ;}
+
+  else 
+
+    {V[final]=dato;
+
+     final = (final+1)%MAX;
+
+	 return true ;
+
+    }
+
+}
+
+
+
+bool ColaC::Desencolar(int &dato)
+
+{ if (ColaVacia()==true)
+
+    {cout<<"cola vacia ";
+
+     return false ;
+
+    }
+
+  else
+
+    { dato=V[frente];
+
+      frente=(frente+1)%MAX;
+
+	  return true;
+
+    }
+
+}
+
+
+
+
+
+void ColaC::Mostrar()
+
+{ for (int i=frente ; i<final ;i++)
+
+      { cout<<V[i]<<" ";}
+
+cout<<endl;
+
+}
+
+
+
+
+
+
+
+COLA.CPP MAIN 
+
+// Cola circular.cpp : Defines the entry point for the console application.
+
+//
+
+
+
+#include "stdafx.h"
+
+#include "conio.h"
+
+#include "ColaC.h"
+
+#include <iostream>
+
+ using namespace std;
+
+
+
+void main()
+
+{
+
+ Cola a;
+
+  int c,x ;
+
+  cout<<"ingrese cantidad de elementos : ";cin>>c;
+
+  for (int i=0; i<c ;i++)
+
+    { cin>>x;
+
+      a.Encolar(x);
+
+    }
+
+  cout<<"cola original  ";
+
+  a.Mostrar();
+
+  int b ;
+
+  cout<<"ingrese la cantidad de elementos a desencolar :";cin>>b;
+
+  for (int i=0; i<b ;i++)
+
+    {a.Desencolar(x);
+
+    }
+
+  a.Mostrar();
+
+  getch();
+
+  }
