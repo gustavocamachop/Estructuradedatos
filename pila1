@@ -1,0 +1,231 @@
+#pragma once
+
+class Pila
+
+{
+
+private:
+
+	int V[15];
+
+	int tope;
+
+public:
+
+	Pila(void);
+
+	bool Apilar (int d);
+
+	bool Desapilar (int &x);
+
+	bool PilaVacia ();
+
+	bool PilaLlena();
+
+	void Mostrar ();
+
+	int getTope();
+
+	void Agregar ();
+
+};
+
+
+
+
+
+#include "StdAfx.h"
+
+#include "Pila.h"
+
+#include <iostream>
+
+ using namespace std;
+
+
+
+
+
+Pila::Pila(void)
+
+{ tope = -1 ;
+
+}
+
+
+
+bool Pila::Apilar(int d)
+
+{ if (PilaLlena()==true)
+
+    {cout<<"pila llena";
+
+     return false ;
+
+    }
+
+  else 
+
+    {tope++;
+
+     V[tope] =  d ;
+
+	 return true;
+
+    }
+
+}
+
+
+
+bool Pila::Desapilar(int &x)
+
+{ if (PilaVacia()==true)
+
+    { cout<<"pila vacia\n";
+
+      return false ;
+
+    }
+
+  else
+
+    {x = V[tope];
+
+	 tope--;
+
+     return true;
+
+    }
+
+}
+
+
+
+bool Pila::PilaLlena()
+
+{ if (tope == 15-1 )
+
+    { return true ;}
+
+  else 
+
+    { return false ;}
+
+}
+
+
+
+bool Pila::PilaVacia()
+
+{ if (tope==-1)
+
+    { return true ;}
+
+  else
+
+    {return false ;}
+
+}
+
+
+
+void Pila::Mostrar() 
+
+{  cout<<endl;
+
+	for (int i=tope ; i>=0;i--)
+
+    { cout<<V[i]<<endl; }
+
+	
+
+}
+
+
+
+int Pila::getTope()
+
+{return tope;}
+
+
+
+void Pila::Agregar()
+
+{Pila p,q ;
+
+ int x,c,cont=0 ;
+
+ cout<<"ingrese cantidad de elementos : "; cin>>c;
+
+          while(cont<c)
+
+               { cin>>x ;
+
+                 p.Apilar(x);
+
+                 cont++;
+
+               }
+
+          p.Mostrar();
+
+ 
+
+ int n , e, t,dato,d;
+
+		  cout<<"ingrese la posicion del elemento a agregar";cin>> n ;
+
+		  cout<<"ingrese el elemento a agregar :";cin>>e ;
+
+		  t=p.getTope();
+
+		  for (int a=0 ; a<=(t-n) ; a++)
+
+		      {p.Desapilar(dato);
+
+		       q.Apilar(dato);
+
+		      }
+
+
+
+		  p.Apilar(e);
+
+
+
+		  for (int b=0 ; b<=(t-n);b++)
+
+		  {q.Desapilar(d);
+
+		   p.Apilar(d);
+
+		  }
+
+		  p.Mostrar();
+
+}
+
+
+
+
+
+#include "stdafx.h"
+
+#include "conio.h"
+
+#include "Pila.h"
+
+
+
+
+
+void main()
+
+{Pila A ;
+
+ A.Agregar();
+
+	getch();
+
+}
