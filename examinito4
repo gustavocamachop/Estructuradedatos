@@ -1,0 +1,149 @@
+#pragma once
+
+class Vectores
+
+{
+
+private:
+
+	int A[100],B [100],C[200];
+
+	int n ;
+
+public:
+
+	Vectores(void);
+
+	~Vectores(void);
+
+    void cargar ();
+
+	void mezclar ();
+
+	void mostrar();
+
+};
+
+
+
+
+
+#include "StdAfx.h"
+
+#include "Vectores.h"
+
+#include <iostream>
+
+ using namespace std;
+
+
+
+
+
+Vectores::Vectores(void)
+
+{
+
+}
+
+
+
+Vectores::~Vectores(void)
+
+{
+
+}
+
+
+
+void Vectores::cargar ()
+
+{cout<<"ingrese n :";
+
+ cin>>n;
+
+ for (int i=0 ; i<n ;i++)
+
+ { cout<<"A["<<i+1<<"] : ";
+
+   cin>>A[i];
+
+ }
+
+  for (int i=0 ; i<n ;i++)
+
+ { cout<<"B["<<i+1<<"] : ";
+
+   cin>>B[i];
+
+ }
+
+ 
+
+}
+
+void Vectores::mezclar ()
+
+{ int cont =0;
+
+	for (int i=0 ; i<2*n ;i++)
+
+      { C[cont]=A[i];
+
+	    cont++;
+
+		C[cont]=B[i];
+
+		cont++;
+
+      }
+
+}
+
+
+
+void Vectores::mostrar()
+
+{for (int i = 0 ; i<2*n ;i++)
+
+    {cout<<C[i]<<"  "; 
+
+    }
+
+}
+
+
+
+
+
+// cuatro.cpp : Defines the entry point for the console application.
+
+//
+
+
+
+#include "stdafx.h"
+
+#include "Vectores.h"
+
+#include <iostream>
+
+#include "conio.h"
+
+ using namespace std;
+
+
+
+void main ()
+
+{ Vectores V ;
+
+  V.cargar();
+
+  V.mezclar();
+
+  V.mostrar();
+
+  getch();
+
+}
