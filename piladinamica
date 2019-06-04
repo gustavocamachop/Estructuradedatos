@@ -1,0 +1,359 @@
+#pragma once
+
+#include "Nodo.h"
+
+class Pila {
+
+  Nodo *inicio;
+
+public:
+
+  Pila(){
+
+    inicio=NULL;
+
+}
+
+  void apilar();
+
+  void pop();
+
+  void mostrar();
+
+  void tamaño();
+
+};
+
+#include "StdAfx.h"
+
+#include "Pila.h"
+
+#include <iostream>
+
+#include <string>
+
+#include "Nodo.h"
+
+#include "conio.h"
+
+using namespace std;
+
+
+
+void Pila::apilar() {
+
+  int valor;
+
+  string valor2;
+
+  string placa;
+
+  string modelo;
+
+  double chasis;
+
+
+
+  Nodo * aux = new Nodo;
+
+       
+
+  system("cls");
+
+  cout << "Ingresa el chasis del auto: ";
+
+  cin >> chasis;
+
+
+
+  cout << "Ingresa el año del auto: ";
+
+  cin.ignore();
+
+  cin >> valor;
+
+
+
+  cout << "Ingresa la marca del auto: ";
+
+  cin.ignore();
+
+  getline(cin, valor2);
+
+
+
+  cout << "Ingresa la placa del auto: ";
+
+  cin.ignore();
+
+  getline(cin, placa);
+
+
+
+  cout << "Ingresa el modelo del auto: ";
+
+  cin.ignore();
+
+  getline(cin, modelo);
+
+
+
+  aux->dato1 = chasis;
+
+  aux->dato = valor;
+
+  aux->nombre = valor2;
+
+  aux->nombre1= placa;
+
+  aux->nombre2= modelo;
+
+  cin.ignore();
+
+  aux->sig = NULL;
+
+
+
+  if (inicio != NULL)
+
+   aux->sig = inicio;
+
+  inicio = aux;
+
+  cout << "Nuevo proceso insertado en la pila! :) \n";
+
+  system("pause");
+
+}
+
+
+
+void Pila::pop() {
+
+  Nodo * temp = new Nodo;
+
+  if (inicio == NULL) {
+
+    system("cls");
+
+    cout << "\nLa pila esta vacia!\n\n";
+
+    system("pause");
+
+  } else {
+
+    temp = inicio;
+
+    inicio = inicio->sig;
+
+    system("cls");
+
+    cout << "\nEl proceso eliminado es: " << temp->dato1<< " - " <<  temp->dato<< "-" << temp->nombre << " - "  <<temp->nombre1<< " - " << temp->nombre2<< "\n" << endl;
+
+    delete temp;
+
+    system("pause");
+
+  }
+
+}
+
+
+
+void Pila::mostrar() {
+
+  Nodo * aux1 = inicio;
+
+  
+
+  if (inicio == NULL) {
+
+    system("cls");
+
+    cout << "\nLa pila esta vacia!\n\n";
+
+    system("pause");
+
+  } else {
+
+    system("cls");
+
+    cout << "Autos ingresados:\n" << endl;
+
+    while (aux1 != NULL) {
+
+      cout <<aux1->dato1<< " - " <<  aux1->dato<< "-" << aux1->nombre << " - "  <<aux1->nombre1<< " - " << aux1->nombre2<<"\n";
+
+      aux1 = aux1->sig;
+
+    }
+
+    system("pause");
+
+  }
+
+}
+
+
+
+void Pila::tamaño() {
+
+  Nodo * aux1 = inicio;
+
+  if (inicio == NULL) {
+
+    system("cls");
+
+    cout << "\nLa pila esta vacia!\n\n";
+
+    system("pause");
+
+  } else {
+
+    int contador = 0;
+
+    while (aux1) {
+
+      contador++;
+
+      aux1 = aux1->sig;
+
+    }
+
+    system("cls");
+
+    cout << "El tamano de la pila es: '" << contador << "'\n" << endl;
+
+    system("pause");
+
+  }
+
+}
+
+#pragma once
+
+#include <iostream>
+
+#include <string>
+
+#include <stdlib.h>
+
+using namespace std;
+
+
+
+class Nodo
+
+{
+
+public:
+
+  int dato;
+
+  string nombre;
+
+  string nombre1;
+
+  string nombre2;
+
+  double dato1;
+
+  Nodo *sig;
+
+};
+
+// exam.cpp : Defines the entry point for the console application.
+
+//
+
+
+
+#include "stdafx.h"
+
+#include "Nodo.h"
+
+#include "Pila.h"
+
+#include <iostream>
+
+#include <string>
+
+#include "conio.h"
+
+using namespace std;
+
+
+
+int main() {
+
+  Nodo nuevo;
+
+  Pila l;
+
+  int opcion;
+
+  do {
+
+    system("cls");
+
+    cout << "------Pila en lista enlazada-----" << endl;
+
+    cout << "[1]Apilar" << endl;
+
+    cout << "[2]Pop" << endl;
+
+    cout << "[3]Mostrar" << endl;
+
+    cout << "[4]Tamaño" << endl;
+
+    cout << "[0]Salir" << endl;
+
+    cout << "\nIngresa tu opcion: ";
+
+    cin >> opcion;
+
+    switch (opcion) {
+
+    case 1:
+
+      l.apilar();
+
+      break;
+
+    case 2:
+
+      l.pop();
+
+      break;
+
+    case 3:
+
+      l.mostrar();
+
+      break;
+
+    case 4:
+
+      l.tamaño();
+
+      break;
+
+    case 0:
+
+      return 0;
+
+      break;
+
+    default:
+
+      cout << "Por favor ingresa una opcion correcta.\n";
+
+      break;
+
+    }
+
+  } while (opcion!=0);
+
+  return 0;
+
+}
